@@ -1,0 +1,23 @@
+mock-folder-structure
+                |
+                |
+                |
+                -> app.py(which should only consist main function to be run)
+                -> config.py(all the configs which is required for the service to be run eg: host, port context_path,db connection details, env variables etc...)
+                -> Dockerfile(optional)
+                -> start.sh(file to be run inside dockerfile)
+                src(folder)
+                         |
+                         |
+                        -> db(db connection)
+                         - > services(core functionalities and core logics should be gone here)
+                         -> utilities(third party packages or implementations should be written inside this eg:Craft Model(an ai model written by clovaai) etc...)
+                        -> resources(main class or function called for particular api)
+                        -> routes(if using flak blueprints use assign routes here inside routes else do it in resources folder py script itself and assign routes there on top of function which needs to be called)
+                         -> Notebooks(utilities or expermentations jupyter books this is optional)
+                         -> errors(exception handling errors functions)
+                          -> wrappers(optional if any wrappers like kafka/spark etc.. msg/ communication is being used)
+                           -> validators(optional validation logics for your code)
+                          -> models(db model initialization, sample response generation function)
+
+do not keep any .env or .logs .db or any file or uri  or local paths which will be critical and be exposed as not best practice.  
